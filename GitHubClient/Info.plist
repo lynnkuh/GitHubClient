@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>githubclient://oauth</string>
+				<string>githubclient</string>
 			</array>
 		</dict>
 	</array>

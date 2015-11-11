@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A005E9D1BF2B96B00C303CC /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A005E9C1BF2B96B00C303CC /* GitHubService.swift */; };
+		1A005E9F1BF2CD9500C303CC /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A005E9E1BF2CD9500C303CC /* KeyChainService.swift */; };
 		1A00E0731BF14E6A00E15BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00E0721BF14E6A00E15BF0 /* AppDelegate.swift */; };
 		1A00E0751BF14E6A00E15BF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00E0741BF14E6A00E15BF0 /* ViewController.swift */; };
 		1A00E0781BF14E6A00E15BF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A00E0761BF14E6A00E15BF0 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		1A00E07D1BF14E6A00E15BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A00E07B1BF14E6A00E15BF0 /* LaunchScreen.storyboard */; };
 		1A00E0881BF14E6A00E15BF0 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00E0871BF14E6A00E15BF0 /* GitHubClientTests.swift */; };
 		1A00E0931BF14E6A00E15BF0 /* GitHubClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00E0921BF14E6A00E15BF0 /* GitHubClientUITests.swift */; };
+		1A00E0A11BF1623500E15BF0 /* GithubOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00E0A01BF1623500E15BF0 /* GithubOAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A005E9C1BF2B96B00C303CC /* GitHubService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
+		1A005E9E1BF2CD9500C303CC /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		1A00E06F1BF14E6A00E15BF0 /* GitHubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A00E0721BF14E6A00E15BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A00E0741BF14E6A00E15BF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 		1A00E08E1BF14E6A00E15BF0 /* GitHubClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A00E0921BF14E6A00E15BF0 /* GitHubClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClientUITests.swift; sourceTree = "<group>"; };
 		1A00E0941BF14E6A00E15BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A00E0A01BF1623500E15BF0 /* GithubOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubOAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				1A00E0721BF14E6A00E15BF0 /* AppDelegate.swift */,
+				1A005E9C1BF2B96B00C303CC /* GitHubService.swift */,
+				1A005E9E1BF2CD9500C303CC /* KeyChainService.swift */,
+				1A00E0A01BF1623500E15BF0 /* GithubOAuth.swift */,
 				1A00E0741BF14E6A00E15BF0 /* ViewController.swift */,
 				1A00E0761BF14E6A00E15BF0 /* Main.storyboard */,
 				1A00E0791BF14E6A00E15BF0 /* Assets.xcassets */,
@@ -256,7 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A00E0A11BF1623500E15BF0 /* GithubOAuth.swift in Sources */,
 				1A00E0751BF14E6A00E15BF0 /* ViewController.swift in Sources */,
+				1A005E9F1BF2CD9500C303CC /* KeyChainService.swift in Sources */,
+				1A005E9D1BF2B96B00C303CC /* GitHubService.swift in Sources */,
 				1A00E0731BF14E6A00E15BF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +498,7 @@
 				1A00E0991BF14E6A00E15BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A00E09A1BF14E6A00E15BF0 /* Build configuration list for PBXNativeTarget "GitHubClientTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +507,7 @@
 				1A00E09C1BF14E6A00E15BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A00E09D1BF14E6A00E15BF0 /* Build configuration list for PBXNativeTarget "GitHubClientUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +516,7 @@
 				1A00E09F1BF14E6A00E15BF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
