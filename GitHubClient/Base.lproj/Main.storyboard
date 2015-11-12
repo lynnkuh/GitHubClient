@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,58 +16,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25u-G8-Lcd">
-                                <rect key="frame" x="261" y="275" width="78" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Print Token">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="PrintToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mpz-sT-qtg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoI-2t-sKW">
-                                <rect key="frame" x="249" y="161" width="102" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Request Token">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="RequestToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hhO-mP-e1h"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="queryStringForRepository" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xji-Ua-cGU">
-                                <rect key="frame" x="206.5" y="330" width="187" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="25u-G8-Lcd" firstAttribute="top" secondItem="JoI-2t-sKW" secondAttribute="bottom" constant="84" id="GE6-fj-RLo"/>
-                            <constraint firstItem="JoI-2t-sKW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I0g-VH-zvV"/>
-                            <constraint firstItem="25u-G8-Lcd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sdq-dA-xp2"/>
-                            <constraint firstItem="JoI-2t-sKW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="bk9-Gq-yId"/>
-                            <constraint firstItem="Xji-Ua-cGU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gnC-Mh-5Cc"/>
-                            <constraint firstItem="Xji-Ua-cGU" firstAttribute="top" secondItem="25u-G8-Lcd" secondAttribute="bottom" constant="25" id="idU-sK-ZFN"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="queryStringForRepository" destination="Xji-Ua-cGU" id="mH4-q8-9gh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="221"/>
+            <point key="canvasLocation" x="-331" y="-85"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="lGS-RK-z3M">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="x81-Tz-l8o" customClass="LoginViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zgw-0R-EbV"/>
+                        <viewControllerLayoutGuide type="bottom" id="6xA-k1-Ymm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="veb-lv-mWx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-mz-dj5">
+                                <rect key="frame" x="281" y="232" width="38" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonSelected:" destination="x81-Tz-l8o" eventType="touchUpInside" id="dVc-XH-PWf"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mSE-df-RkD">
+                                <rect key="frame" x="520" y="33" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BcA-mz-dj5" firstAttribute="top" secondItem="zgw-0R-EbV" secondAttribute="bottom" constant="212" id="e14-jj-Sea"/>
+                            <constraint firstItem="BcA-mz-dj5" firstAttribute="centerX" secondItem="veb-lv-mWx" secondAttribute="centerX" id="vs3-Ia-JS1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="mSE-df-RkD" id="Op4-Ge-G4U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Od4-uY-Dqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318" y="-79"/>
         </scene>
     </scenes>
 </document>
