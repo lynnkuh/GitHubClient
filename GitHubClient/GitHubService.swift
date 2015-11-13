@@ -33,34 +33,35 @@ class GitHubService {
                 if let data = data {
                     do {
                         let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+                       
                         print(json)
                     } catch _ {}
                 }
             }).resume()
-        } catch _ {}
+        } catch _ {  }
         
     }
     
         
     
- class func GetUser(completion: (success: Bool, json: [AnyObject]) -> ()) {
-    
+    class func CreateRepository(name: String, description: String?)
+    {
     
     do {
         
         let token = try GithubOAuth.shared.accessToken()
-        guard let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)")
-            
-            else {
-            
-            print("Error: cannot create URL")
-            return
-        }
+        guard let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)") else { return }
         
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        let newPost: NSDictionary = ["name": "TestRepository"]
+        
+        let newPost = ["name": name, "description": description!]
+        let body = try! NSJSONSerialization.dataWithJSONObject(newPost, options: NSJSONWritingOptions.PrettyPrinted)
+        
+        request.setValue("application/json", forHTTPHeaderField:"Accept")
+        request.HTTPBody = body
+        
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             
             print("did complete making request")
@@ -68,14 +69,11 @@ class GitHubService {
                 print(error)
             }
             
-             if let data = data {
-                do {
-                    let json = try NSJSONSerialization.dataWithJSONObject(newPost, options: NSJSONWritingOptions.PrettyPrinted)
-                    print(json)
-                } catch _ {
-                    print("Error cannot create repository from post")
-                }
+            if let data = data {
+                let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+                print(json)
             }
+            
         }).resume()
     } catch _ {}
 }

@@ -25,14 +25,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonSelected(sender: AnyObject) {
         
-        self.activityIndicatorView.startAnimating()
-        NSOperationQueue().addOperationWithBlock { () -> Void in
-            usleep(1000)
-            NSOperationQueue.mainQueue().addOperationWithBlock( {
-                () -> Void in
-                
-            })
-        }
+        GithubOAuth.shared.oauthRequestWith(["scope" : "email,user,repo"])
     }
     
     class func identifier() -> String {

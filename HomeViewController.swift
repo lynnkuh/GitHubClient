@@ -8,26 +8,109 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var repositories = [Repository]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        GitHubService.GetUser { (success, json) -> () in
-            //
-        }
-
-        // Do any additional setup after loading the view.
+        self.setupTableView()
+        self.update()
     }
+    
+    func setupTableView() {
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+    
+    //       GitHubService.CreateRepository("Test", description: "Test repository")
+    
+    }
+    func update() {
+        
+        do {
+            let token = try GithubOAuth.shared.accessToken()
+            
+            let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)")!
+            
+            let request = NSMutableURLRequest(URL: url)
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) -> Void in
+                
+                if let error = error {
+                    print(error)
+                }
+                
+                if let data = data {
+                    if let arraysOfRepoDictionaries = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [[String : AnyObject]] {
+                        
+                        var repositories = [Repository]()
+                        
+                        for eachRepository in arraysOfRepoDictionaries {
+                            
+                            let name = eachRepository["name"] as? String
+                            let id = eachRepository["id"] as? Int
+                            let owner = eachRepository["owner"] as? [String : AnyObject]
+                            
+                            print(owner)
+                            
+                           
+                                
+                            let login = owner!["login"] as? String
+                            let avatarUrl = owner!["avatarUrl"] as? String
+                            let ownerId = owner!["id"] as? Int
+                            let url = owner!["url"] as? String
+                            let repoOwner = Owner(login: login, avatarUrl: avatarUrl, id: ownerId, url: url)
+                                
+                        
+
+                            if let name = name, id = id {
+                                let repo = Repository(name: name, id: id, owner: repoOwner)
+                                repositories.append(repo)
+                            }
+                        }
+                        
+                        // This is because NSURLSession comes back on a background q.
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            self.repositories = repositories
+                        })
+                    }
+                }
+                }.resume()
+        } catch {}
+    }
+    
+    
+    // MARK: UITableViewDataSource
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.repositories.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let repository = self.repositories[indexPath.row]
+        
+        cell.textLabel?.text = repository.name
+        
+        return cell
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func update() {
-        
-    }
+   
     
   
     /*

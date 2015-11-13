@@ -21,6 +21,7 @@
 		1A77D7041BF3EA13008B1978 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77D7031BF3EA13008B1978 /* Repository.swift */; };
 		1A77D7061BF3EE7E008B1978 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77D7051BF3EE7E008B1978 /* LoginViewController.swift */; };
 		1A77D7091BF43ADE008B1978 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A77D7081BF43ADE008B1978 /* HomeViewController.swift */; };
+		1AD517F41BF535AB00036B6A /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD517F31BF535AB00036B6A /* ModelParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1A77D7031BF3EA13008B1978 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = ../Repository.swift; sourceTree = "<group>"; };
 		1A77D7051BF3EE7E008B1978 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		1A77D7081BF43ADE008B1978 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		1AD517F31BF535AB00036B6A /* ModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				1A77D7031BF3EA13008B1978 /* Repository.swift */,
 				1A77D7001BF3E874008B1978 /* Owner.swift */,
 				1A77D6FE1BF3E7D9008B1978 /* User.swift */,
+				1AD517F31BF535AB00036B6A /* ModelParser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				1A00E0A11BF1623500E15BF0 /* GithubOAuth.swift in Sources */,
 				1A77D7011BF3E874008B1978 /* Owner.swift in Sources */,
 				1A77D7041BF3EA13008B1978 /* Repository.swift in Sources */,
+				1AD517F41BF535AB00036B6A /* ModelParser.swift in Sources */,
 				1A77D6FF1BF3E7D9008B1978 /* User.swift in Sources */,
 				1A77D7091BF43ADE008B1978 /* HomeViewController.swift in Sources */,
 				1A005E9F1BF2CD9500C303CC /* KeyChainService.swift in Sources */,

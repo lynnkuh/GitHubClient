@@ -11,12 +11,12 @@ import Foundation
 
 class Owner {
     
-    let login: String
-    let avatarUrl: String
-    let id: Int
-    let url: String
+    let login: String?
+    let avatarUrl: String?
+    let id: Int?
+    let url: String?
     
-    init(login: String, avatarUrl: String, id: Int, url: String) {
+    init(login: String?, avatarUrl: String?, id: Int?, url: String?) {
         self.login = login
         self.avatarUrl = avatarUrl
         self.id = id
