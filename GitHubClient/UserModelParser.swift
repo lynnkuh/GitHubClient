@@ -1,5 +1,5 @@
 //
-//  ModelParser.swift
+//  UserModelParser.swift
 //  GitHubClient
 //
 //  Created by Regular User on 11/12/15.
@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import CoreData
 
-class ModelParser {
+class UserModelParser {
 
 
-    class func parseOwner(completion: (success: Bool, json: [[String: AnyObject]]?) -> ()) {
+    class func parseUser(completion: (success: Bool, json: [[String: AnyObject]]?) -> ()) {
         
         var owners = [Owner]()
         
         // This is the official URL, use it. This will work.
-        // "https://api.github.com/user/repos?access_token=\(token)"
+        // "https://api.github.com/user?access_token=\(token)"
         do {
             
             let token = try GithubOAuth.shared.accessToken()
-            guard let url = NSURL(string: "https://api.github.com/user/repos?access_token=\(token)")
+            guard let url = NSURL(string: "https://api.github.com/user?access_token=\(token)")
                 else { return completion(success: false, json: nil) }
             
             let request = NSMutableURLRequest(URL: url)
@@ -39,26 +40,18 @@ class ModelParser {
                 
                 if let data = data {
                     do {
-                        if let arraysOfRepoDictionaries = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [[String : AnyObject]] {
-
+                        let userObjects = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+    
                        
+                        guard let name = userObjects["name"] as? String else {return }
+                           guard let login = userObjects["login"] as? String else {return }
+                           guard let location = userObjects["location"] as? String else {return }
+                          guard  let blog = userObjects["blog"] as? String else {return }
+                          guard  let createdAt = userObjects["createdAt"] as? String else {return }
+                           guard let followers = userObjects["followers"] as? String else {return }
                         
-                        for eachRepository in arraysOfRepoDictionaries {
-                            
-                            let login = eachRepository["login"] as? String
-                            let avatarUrl = eachRepository["avatar_url"] as? String
-                            let id = eachRepository["id"] as? Int
-                            let url = eachRepository["url"] as? String
-                            
-                            
-                            
-                                let owner = Owner(login: login, avatarUrl: avatarUrl, id: id, url: url)
-                                owners.append(owner)
-                           
-                        }
-                            
-                        }
-                        
+//                           let date = NSDate.dateFromString(createdAt)
+//                        User(name: name, login: login, location: location, blog: blog, createdAt: date, followers: followers)
                         
                         
 
