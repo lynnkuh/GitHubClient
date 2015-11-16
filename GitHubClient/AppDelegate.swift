@@ -56,33 +56,41 @@ func checkLoginAuthorizationStatus() {
     } catch _ { self.presentLoginViewController() }
 }
     
-// Present the login screen if the token from GitHub is not available
-// This is a non-seque way to return control to the Login screen 
-
-func presentLoginViewController() {
-    if let homeViewController = self.window?.rootViewController as? HomeViewController, storyboard = homeViewController.storyboard {
-        if let loginViewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewController.identifier()) as? LoginViewController {
-            homeViewController.addChildViewController(loginViewController)
-            homeViewController.view.addSubview(loginViewController.view)
-            loginViewController.didMoveToParentViewController(homeViewController)
-            loginViewController.loginCompletionHandler = ({
-                UIView.animateWithDuration(0.6, delay: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                    loginViewController.view.alpha = 0.0
-                    }, completion: { (finished) -> Void in
-                        loginViewController.view.removeFromSuperview()
-                        loginViewController.removeFromParentViewController()
-                        
-                        // Make the call for repositories.
-                        homeViewController.update()
-                })
-            })
+    func presentLoginViewController() {
+        
+        if let tabbarController = self.window?.rootViewController as? UITabBarController, homeViewController = tabbarController.viewControllers?.first as? HomeViewController, storyboard = tabbarController.storyboard {
             
-            // We need a pointer to our LoginViewController for application:sourceApplication:annotation:
-            self.loginViewController = loginViewController
+            
+            if let loginViewController = storyboard.instantiateViewControllerWithIdentifier(LoginViewController.identifier()) as? LoginViewController {
+                
+                homeViewController.addChildViewController(loginViewController)
+                homeViewController.view.addSubview(loginViewController.view)
+                loginViewController.didMoveToParentViewController(homeViewController)
+                
+                tabbarController.tabBar.hidden = true
+                
+                loginViewController.loginCompletionHandler = ({
+                    UIView.animateWithDuration(0.6, delay: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                        loginViewController.view.alpha = 0.0
+                        }, completion: { (finished) -> Void in
+                            loginViewController.view.removeFromSuperview()
+                            loginViewController.removeFromParentViewController()
+                            
+                            tabbarController.tabBar.hidden = false
+                            
+                            // Make the call for repositories.
+                            homeViewController.update()
+                    })
+                })
+                
+                self.loginViewController = loginViewController
+                
+            }
+            
+            
         }
+        
     }
-    
-}
 
 }
 

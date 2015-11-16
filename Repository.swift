@@ -12,13 +12,13 @@ class Repository {
     
     let name: String
     let id: Int
-    let owner: Owner?
+ 
 
     
-    init(name: String, id: Int, owner: Owner?) {
+    init(name: String, id: Int ) {
         self.name = name
         self.id = id
-        self.owner = owner
+
         
         
     }

@@ -56,22 +56,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             let name = eachRepository["name"] as? String
                             let id = eachRepository["id"] as? Int
-                            let owner = eachRepository["owner"] as? [String : AnyObject]
                             
-                            print(owner)
-                            
-                           
-                                
-                            let login = owner!["login"] as? String
-                            let avatarUrl = owner!["avatarUrl"] as? String
-                            let ownerId = owner!["id"] as? Int
-                            let url = owner!["url"] as? String
-                            let repoOwner = Owner(login: login, avatarUrl: avatarUrl, id: ownerId, url: url)
-                                
-                        
-
                             if let name = name, id = id {
-                                let repo = Repository(name: name, id: id, owner: repoOwner)
+                                let repo = Repository(name: name, id: id)
                                 repositories.append(repo)
                             }
                         }
