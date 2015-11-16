@@ -28,6 +28,9 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.collectionViewLayout = CustomFlowLayout(columns: 2)
+        self.searchBar.delegate = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,6 +107,7 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else {return}
+        self.searchBar.resignFirstResponder()
         self.update(searchTerm)
     }
 }

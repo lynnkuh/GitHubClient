@@ -28,7 +28,9 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.searchBar.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -42,7 +44,7 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
         do {
             let token = try GithubOAuth.shared.accessToken()
             
-            let url = NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)")!
+            guard let url = NSURL(string: "https://api.github.com/search/repositories?access_token=\(token)&q=\(searchTerm)") else { return }
             
             let request = NSMutableURLRequest(URL: url)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -100,12 +102,15 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: UISearchBarDelegate
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("have clicked search")
         guard let searchTerm = searchBar.text else {return}
         self.update(searchTerm)
     }
     
 
-
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     /*
     // MARK: - Navigation
