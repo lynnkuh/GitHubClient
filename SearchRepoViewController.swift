@@ -13,6 +13,7 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
   
     @IBOutlet weak var tableView: UITableView!
     
+    
     @IBOutlet weak var searchBar: UISearchBar!
 
     var repositories = [Repository]() {

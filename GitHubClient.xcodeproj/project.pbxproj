@@ -26,6 +26,8 @@
 		1A99F5EC1BF99DE500A91965 /* CustomViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99F5EB1BF99DE500A91965 /* CustomViewLayout.swift */; };
 		1A99F5EE1BF9A3E300A91965 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A99F5ED1BF9A3E300A91965 /* UserCollectionViewCell.swift */; };
 		1AD517F41BF535AB00036B6A /* UserModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD517F31BF535AB00036B6A /* UserModelParser.swift */; };
+		1AD7C7D21BFA61980081C96E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD7C7D11BFA61980081C96E /* ProfileViewController.swift */; };
+		1ADA9FF21BFC218000DDCA95 /* CustomModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA9FF11BFC218000DDCA95 /* CustomModalTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		1A99F5EB1BF99DE500A91965 /* CustomViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewLayout.swift; sourceTree = "<group>"; };
 		1A99F5ED1BF9A3E300A91965 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCollectionViewCell.swift; path = ../UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AD517F31BF535AB00036B6A /* UserModelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModelParser.swift; sourceTree = "<group>"; };
+		1AD7C7D11BFA61980081C96E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1ADA9FF11BFC218000DDCA95 /* CustomModalTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModalTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +173,10 @@
 		1A77D7071BF3FBB9008B1978 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1AD7C7D11BFA61980081C96E /* ProfileViewController.swift */,
 				1A99F5ED1BF9A3E300A91965 /* UserCollectionViewCell.swift */,
 				1A99F5E71BF9681200A91965 /* SearchUserViewController.swift */,
+				1ADA9FF11BFC218000DDCA95 /* CustomModalTransition.swift */,
 				1A99F5EB1BF99DE500A91965 /* CustomViewLayout.swift */,
 				1A99F5E91BF968CA00A91965 /* SearchRepoViewController.swift */,
 				1A77D7081BF43ADE008B1978 /* HomeViewController.swift */,
@@ -319,9 +325,11 @@
 				1A77D7041BF3EA13008B1978 /* Repository.swift in Sources */,
 				1AD517F41BF535AB00036B6A /* UserModelParser.swift in Sources */,
 				1A77D6FF1BF3E7D9008B1978 /* User.swift in Sources */,
+				1ADA9FF21BFC218000DDCA95 /* CustomModalTransition.swift in Sources */,
 				1A77D7091BF43ADE008B1978 /* HomeViewController.swift in Sources */,
 				1A005E9F1BF2CD9500C303CC /* KeyChainService.swift in Sources */,
 				1A005E9D1BF2B96B00C303CC /* GitHubService.swift in Sources */,
+				1AD7C7D21BFA61980081C96E /* ProfileViewController.swift in Sources */,
 				1A00E0731BF14E6A00E15BF0 /* AppDelegate.swift in Sources */,
 				1A99F5EC1BF99DE500A91965 /* CustomViewLayout.swift in Sources */,
 			);

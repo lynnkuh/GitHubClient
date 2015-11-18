@@ -8,12 +8,14 @@
 
 import UIKit
 
-class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UIViewControllerTransitioningDelegate {
   
    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let customTransition = CustomModalTransition(duration: 2.0)
     
     var users = [User]() {
         didSet {
@@ -27,10 +29,11 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.collectionViewLayout = CustomFlowLayout(columns: 2)
         self.searchBar.delegate = self
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.collectionViewLayout = CustomFlowLayout(columns: 2)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +44,7 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
         do {
             let token = try GithubOAuth.shared.accessToken()
             
-            let url = NSURL(string: "https://api.github.com/search/users?access_token=\(token)&q=\(searchTerm)")!
+            guard let url = NSURL(string: "https://api.github.com/search/users?access_token=\(token)&q=\(searchTerm)") else { return }
             
             let request = NSMutableURLRequest(URL: url)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -54,7 +57,7 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
                 
                 if let data = data {
                     
-                    if let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject] {
+                   if let json = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as? [String : AnyObject] {
                         
                         if let items = json["items"] as? [[String : AnyObject]] {
                             
@@ -87,7 +90,7 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
                 
                 }.resume()
-        } catch {}
+        } catch { return }
     }
     
     // MARK: UICollectionViewDataSource
@@ -110,4 +113,25 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
         self.searchBar.resignFirstResponder()
         self.update(searchTerm)
     }
-}
+    
+    // MARK: prepareForSegue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetailView" {
+            if let cell = sender as? UICollectionViewCell, indexPath = collectionView.indexPathForCell(cell) {
+                guard let profileViewController = segue.destinationViewController as? ProfileViewController else {return}
+                profileViewController.transitioningDelegate = self
+                
+                let user = users[indexPath.item]
+                print(user.profileImageUrl)
+                
+                profileViewController.chosenUser = user
+            }
+        }
+    }
+    
+    // MARK: Transition
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self.customTransition
+    }}
