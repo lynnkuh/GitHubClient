@@ -16,6 +16,10 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileName: UITextField!
     
+    class func identifier() -> String {
+        return "ProfileViewController"
+    }
+    
     var chosenUser: User? {
         didSet {
             print("Profile view controller received the user: \(chosenUser?.name)")
