@@ -8,6 +8,12 @@
 
 import UIKit
 
+/*protocol PassProfileImageProfileNameFromSearchUserDelegate{
+    func didSelectImageProfileNameFromProfile( profileName: String, profileImageUrl:String)->()
+
+}
+*/
+
 class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, UIViewControllerTransitioningDelegate {
   
    
@@ -15,7 +21,9 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let customTransition = CustomModalTransition(duration: 2.0)
+    let customTransition = CustomModalTransition(duration: 6.0)
+    
+//    var delegate: PassProfileImageProfileNameFromSearchUserDelegate?
     
     var users = [User]() {
         didSet {
@@ -34,6 +42,10 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = CustomFlowLayout(columns: 2)
         
+ //       if let profileViewController = self.delegate as? ProfileViewController {
+ //           profileViewController.delegate = self
+            
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,19 +115,35 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("userCell", forIndexPath: indexPath) as! UserCollectionViewCell
         let user = self.users[indexPath.row]
         cell.user = user
+//        let profileImageUrl = cell.user.profileImageUrl;
+//        let profileNameSelected = cell.user.name;
+        
+//            self.delegate?.didSelectImageProfileNameFromProfile(profileNameSelected, profileImageUrl: profileImageUrl)
+        
         return cell
     }
     
     // MARK: UISearchBarDelegate
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        guard let searchTerm = searchBar.text else {return}
-        self.searchBar.resignFirstResponder()
-        self.update(searchTerm)
+        if let searchTerm = searchBar.text {
+            if String.validateInput(searchTerm) {
+                self.update(searchTerm)            }
+        }
+    else {return}
+        
     }
     
-    // MARK: prepareForSegue
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
     
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        self.searchBar.resignFirstResponder()
+        return true
+    }
+    // MARK: prepareForSegue
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetailView" {
             if let cell = sender as? UICollectionViewCell, indexPath = collectionView.indexPathForCell(cell) {
@@ -129,9 +157,12 @@ class SearchUserViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
-    
+
+   
+ 
     // MARK: Transition
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self.customTransition
-    }}
+    }
+}

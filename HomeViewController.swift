@@ -56,9 +56,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
                             let name = eachRepository["name"] as? String
                             let id = eachRepository["id"] as? Int
+                            let url = eachRepository["svn_url"] as? String
                             
-                            if let name = name, id = id {
-                                let repo = Repository(name: name, id: id)
+                            if let name = name, id = id, url = url {
+                                let repo = Repository(name: name, id: id, url: url)
                                 repositories.append(repo)
                             }
                         }

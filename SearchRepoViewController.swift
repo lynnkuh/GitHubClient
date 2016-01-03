@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, SFSafariViewControllerDelegate {
     
   
     @IBOutlet weak var tableView: UITableView!
@@ -68,10 +69,11 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
                                 
                                 let name = eachRepository["name"] as? String
                                 let id = eachRepository["id"] as? Int
+                                let url = eachRepository["url"] as? String
                                 
                                 
-                                if let name = name, id = id {
-                                    let repo = Repository(name: name, id: id)
+                                if let name = name, id = id, url = url {
+                                    let repo = Repository(name: name, id: id, url: url)
                                     repositories.append(repo)
                                 }
                             }
@@ -100,14 +102,48 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    // MARK: UISearchBarDelegate
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("have clicked search")
-        guard let searchTerm = searchBar.text else {return}
-        self.update(searchTerm)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let selectedRepositoryUrl = repositories[indexPath.row].url
+        print("The selected repo url for safari is: \(selectedRepositoryUrl)")
+        
+        if #available(iOS 9.0, *) {
+            let safariViewController = SFSafariViewController(URL: NSURL(string: selectedRepositoryUrl)!, entersReaderIfAvailable: true)
+            safariViewController.delegate = self
+            self.presentViewController(safariViewController, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+            self.performSegueWithIdentifier("GitHubWebViewController", sender: self)
+        }
+        
     }
     
+    // MARK: UISearchBarDelegate
+    
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        self.searchBar.resignFirstResponder()
+        return true
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("have clicked search")
+        if let searchTerm = searchBar.text {
+            if String.validateInput(searchTerm) {
+                self.update(searchTerm)
+            }
+        }
+        else {return}
+        
+    }
+    
+    @available(iOS 9.0, *)
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
 
     override func prefersStatusBarHidden() -> Bool {
         return true
