@@ -3,10 +3,38 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ProfileViewController.getName() -&gt; ():ProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "profileName.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static GitHubService.GetUser((success : Bool, json : [AnyObject]) -&gt; ()) -&gt; ():GitHubService.swift">
          <PersistentStrings>
             <PersistentString
                value = "data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileViewController.getImage() -&gt; ():ProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chosenUser?.name">
+            </PersistentString>
+            <PersistentString
+               value = "chosenUser?.profileImageUrl">
+            </PersistentString>
+            <PersistentString
+               value = "chosenUser">
+            </PersistentString>
+            <PersistentString
+               value = "profileURL">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.image">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

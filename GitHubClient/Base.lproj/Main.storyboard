@@ -118,6 +118,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="3z0-gs-YkV" id="SYX-7z-O8v"/>
+                                            <segue destination="PNO-ku-q2f" kind="showDetail" identifier="showDetailView" id="SKB-xK-nz7"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -159,7 +160,6 @@
                     <connections>
                         <outlet property="collectionView" destination="8Wo-a7-2E4" id="zx4-5x-n9M"/>
                         <outlet property="searchBar" destination="sq6-pz-Nq1" id="poO-ND-ibP"/>
-                        <segue destination="PNO-ku-q2f" kind="showDetail" identifier="showDetailView" id="v15-DI-MrC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQX-Gd-wC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,7 +295,7 @@
                                     <constraint firstAttribute="width" constant="240" id="wzr-bk-UrB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUP-Mc-o4I">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUP-Mc-o4I">
                                 <rect key="frame" x="190" y="96" width="115" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -335,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8G-NW-Cgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="-1045"/>
+            <point key="canvasLocation" x="730" y="-1045"/>
         </scene>
         <!--Git Hub Web View View Controller-->
         <scene sceneID="HGi-5J-Hsf">

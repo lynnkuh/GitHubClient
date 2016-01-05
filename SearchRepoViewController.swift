@@ -69,7 +69,7 @@ class SearchRepoViewController: UIViewController, UITableViewDelegate, UITableVi
                                 
                                 let name = eachRepository["name"] as? String
                                 let id = eachRepository["id"] as? Int
-                                let url = eachRepository["url"] as? String
+                                let url = eachRepository["svn_url"] as? String
                                 
                                 
                                 if let name = name, id = id, url = url {
